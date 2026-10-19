@@ -2,6 +2,20 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.5.0] - 2026-10-19
+
+### Ajouté
+
+- **Flip 7** : calculateur de manche par joueur, jusqu'à 200 points, égalité rejouée.
+  - Cartes nombres, bonus +2 à +10, x2, saut à 0, bonus Flip 7 de +15.
+  - Édition **Flip 7 Vengeance** : nombres jusqu'à 13, malus et ÷2, Zéro, et mode sans pitié en option.
+- **Uno** : le gagnant de la manche marque les cartes restées dans les autres mains, comptées par type.
+  - Éditions **classique**, **Uno Flip** (côté clair ou sombre) et **No Mercy** (1000 points, +250 par joueur éliminé).
+  - Décompte alternatif officiel : chacun marque ses propres points et le plus bas gagne.
+- **6 qui prend !** : saisie des numéros des cartes ramassées (les têtes de bœuf sont calculées) ou directement des têtes.
+  - Fin à 66, configurable : « 66 ou plus » ou « au-delà de 66 ».
+  - Édition **6 qui surprend !** en 2 manches.
+
 ## [1.4.0] - 2026-10-19
 
 ### Ajouté
@@ -92,6 +106,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.5.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.5.0
 [1.4.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.4.0
 [1.3.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.3.0
 [1.2.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.2.0

@@ -26,6 +26,9 @@ C'est une PWA (application web installable) : elle fonctionne hors ligne, garde 
 | Skyjo | Score de manche, doublé pour celui qui finit sans avoir strictement le plus petit ; fin à 100, le plus bas gagne | Skyjo Action, Skyjo – Extension (rappels de règles) |
 | Dix | Plus longue suite par couleur (une suite de 1 à 9 vaut 10), départage par la monnaie puis le nombre de cartes | Aucune extension n'existe |
 | 421 | Jetons en charge (pris au pot) puis en décharge (donnés au perdant du tour) : on choisit la meilleure combinaison et les joueurs, l'appli déplace les jetons ; plusieurs parties, le score est le nombre de défaites | Règles locales paramétrables : nombre de jetons, valeur du 4-2-1, nénette |
+| Flip 7 | Calculateur de manche par joueur (nombres, bonus, x2, saut, Flip 7 +15), jusqu'à 200 points | Flip 7 Vengeance (malus, ÷2, Zéro, 13 porte-bonheur, mode sans pitié) |
+| Uno | Le gagnant marque les cartes restées en main, comptées par type ; ou chacun ses points, le plus bas gagne | Classique, Uno Flip (côtés clair et sombre), No Mercy (1000 points, +250 par élimination) |
+| 6 qui prend ! | Numéros des cartes ramassées (têtes de bœuf calculées) ou têtes directement ; fin à 66, le plus bas gagne | 6 qui surprend ! (2 manches) ; variante pro sans changement de décompte |
 | **Feuille libre** | Feuille paramétrable : nom du jeu, saisie par manches ou par catégories, score le plus haut ou le plus bas, score de fin et nombre de manches facultatifs ; les feuilles déjà utilisées sont proposées comme modèles | — |
 
 Les extensions se cochent au moment de créer la partie. Les options qui dépendent d'une extension n'apparaissent que si elle est cochée.

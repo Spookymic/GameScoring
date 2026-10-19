@@ -162,6 +162,49 @@ Légende :
 - Le nombre de jetons, la valeur du 4-2-1 et la règle de la nénette sont réglables à la création de la partie.
 - Charge : le plus mauvais lancer prend au pot autant de jetons que vaut la meilleure combinaison. Décharge : le meilleur lancer donne ce nombre de ses propres jetons au plus mauvais. Un joueur sans jeton en décharge est libéré ; le dernier qui en a encore perd.
 
+## Flip 7 (The Op / Catch Up Games)
+
+- ✅ Une manche se compte ainsi :
+  - somme des cartes nombres ;
+  - x2, qui ne double que ces nombres ;
+  - puis les bonus +2 à +10 ;
+  - puis +15 pour un Flip 7 (7 cartes nombres différentes).
+- ✅ Un joueur qui saute marque 0, bonus compris. La partie s'arrête à la fin de la manche où un joueur atteint 200 ; en cas d'égalité, tout le monde rejoue une manche. Source : [livret officiel (Dized)](https://rules.dized.com/game/dPDRM857TU-BFRF7LzGE0g/-UTTEBFOTuyjbeZOlRQPUA/calculate-scores).
+- ✅ Vengeance :
+  - nombres de 0 à 13 ;
+  - ÷2 arrondi à l'inférieur, sur les nombres seulement ;
+  - malus −2 à −10, sans descendre sous 0 ;
+  - le Zéro annule la manche sauf Flip 7 ;
+  - deux 13 possibles ;
+  - mode sans pitié : scores négatifs, et un Flip 7 donne +15 ou −15 à un adversaire.
+
+  Source : [règles FR](https://catchupgames.com/nos-jeux/flip-7-vengeance/).
+- ⚠️ Les noms français des cartes du jeu de base viennent de sources secondaires.
+
+## Uno (Mattel)
+
+- ✅ Classique :
+  - chiffres à leur valeur ;
+  - +2, Inversion et Passe à 20 ;
+  - jokers à 50 (Mélanger et Personnalisable à 50 depuis 2022, 40 avant) ;
+  - partie en 500 points.
+
+  Décompte alternatif : chacun marque ses propres points, et quand un joueur atteint 500, le plus bas gagne. [Fiche Mattel](https://service.mattel.com/instruction_sheets/W2085-FR.pdf)
+- ✅ Uno Flip : on compte le côté en jeu à la fin de la manche.
+  - Côté clair : +1 = 10, actions = 20, Joker = 40, Joker +2 = 50.
+  - Côté sombre : +5 = 20, Inversion et Flip = 20, Passer tous = 30, Joker = 40, Joker pioche couleur = 60.
+
+  [Fiche Mattel](https://service.mattel.com/instruction_sheets/GDR44-FR.pdf)
+- ✅ No Mercy : actions de couleur à 20, jokers action à 50, partie en 1000, +250 par joueur éliminé (25 cartes en main). [Fiche Mattel](https://service.mattel.com/instruction_sheets/HWV18-FR.pdf)
+- ⚠️ No Mercy : la fiche ne dit pas explicitement qui reçoit les 250 points ; l'appli les donne au gagnant de la manche.
+
+## 6 qui prend ! (Gigamic / Amigo)
+
+- ✅ Têtes de bœuf : 55 = 7 ; 11, 22… 99 = 5 ; 10, 20… 100 = 3 ; 5, 15… 95 = 2 ; les autres = 1. Le plus petit total gagne, et une égalité est un partage. [Règles Amigo](https://blog.amigo-spiele.de/content/ap/rule/04910-DE-AmigoRule.pdf), [règles Gigamic](https://www.gigamic.com/index.php?controller=attachment&id_attachment=56)
+- ⚠️ Fin de partie : les règles Amigo actuelles disent « 66 ou plus », les règles Gigamic « plus de 66 ». C'est réglable, « 66 ou plus » par défaut.
+- ✅ 6 qui surprend ! : exactement 2 manches, sans score cible. Avec « Négatif = Positif », des têtes s'annulent : saisir alors directement les têtes de bœuf.
+- ✅ La variante pro ne change pas le décompte.
+
 ## Dix (Lucky Duck Games, édition française de TEN)
 
 - ✅ 1 point par carte de la plus longue suite de chaque couleur ; une suite de 1 à 9 vaut 10. Égalité : la monnaie restante, puis le moins de cartes.

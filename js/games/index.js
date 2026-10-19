@@ -18,8 +18,11 @@ import encore from './encore.js';
 import skyjo from './skyjo.js';
 import dix from './dix.js';
 import dice421 from './dice421.js';
+import flip7 from './flip7.js';
+import uno from './uno.js';
+import sixquiprend from './sixquiprend.js';
 import custom from './custom.js';
 
-export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, swu, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, custom];
+export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, swu, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, flip7, uno, sixquiprend, custom];
 
 export const getGame = (id) => GAMES.find((g) => g.id === id);
