@@ -11,6 +11,7 @@ sw.js                   service worker : cache hors ligne
 css/app.css             tout le style (thèmes clair et sombre via variables CSS)
 js/app.js               navigation et écrans communs
 js/dom.js               h() pour créer des éléments, uid()
+js/version.js           numéro de version affiché en bas de l'accueil
 js/store.js             persistance dans localStorage
 js/components.js        composants partagés par les jeux
 js/games/index.js       liste des jeux (GAMES) et getGame()

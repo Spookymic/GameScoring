@@ -54,7 +54,11 @@ npm start            # serveur local sur http://localhost:8080
 npm run icons        # régénère les icônes PNG dans icons/
 ```
 
-Avant de publier une modification, incrémentez `CACHE` dans [sw.js](sw.js), par exemple `gamescoring-v4` → `gamescoring-v5`. Sinon, les téléphones qui ont déjà installé l'appli garderont l'ancienne version.
+Pour publier une nouvelle version :
+
+1. Incrémenter `CACHE` dans [sw.js](sw.js), par exemple `gamescoring-v6` → `gamescoring-v7`. Sinon, les téléphones qui ont déjà installé l'appli garderont l'ancienne version.
+2. Mettre le nouveau numéro de version dans [js/version.js](js/version.js) (affiché en bas de l'accueil) et dans [package.json](package.json).
+3. Ajouter une entrée au [CHANGELOG.md](CHANGELOG.md), puis créer le tag `vX.Y.Z`.
 
 Pour aller plus loin :
 

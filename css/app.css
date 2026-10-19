@@ -478,3 +478,5 @@ select.text { width: 100%; }
 /* Skyjo */
 .grid .doubled { color: var(--danger); }
 .qsum.neutral { background: var(--surface-2); color: var(--text); }
+
+.app-version { margin: 8px 0 0; text-align: center; font-size: 0.8rem; color: var(--muted); }

@@ -1,6 +1,7 @@
 import { h, uid } from './dom.js';
 import { store } from './store.js';
 import { GAMES, getGame } from './games/index.js';
+import { VERSION } from './version.js';
 
 const app = document.getElementById('app');
 const dateFmt = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeStyle: 'short' });
@@ -75,7 +76,8 @@ function home() {
       h('span', { class: 'muted small' }, g.tagline)))),
     h('nav', { class: 'link-list' },
       h('a', { class: 'card link-card', href: '#/history' }, h('span', { class: 'grow' }, '📜 Historique'), h('span', { class: 'muted small' }, `${store.history.length} partie${store.history.length > 1 ? 's' : ''}`), h('span', { class: 'chev' }, '›')),
-      h('a', { class: 'card link-card', href: '#/stats' }, h('span', { class: 'grow' }, '🏆 Statistiques'), h('span', { class: 'chev' }, '›'))));
+      h('a', { class: 'card link-card', href: '#/stats' }, h('span', { class: 'grow' }, '🏆 Statistiques'), h('span', { class: 'chev' }, '›'))),
+    h('p', { class: 'app-version' }, `GameScoring v${VERSION}`));
 }
 
 // ---------------------------------------------------------------- préparation
