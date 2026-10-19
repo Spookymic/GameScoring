@@ -103,19 +103,25 @@ export default {
           const before = cells.slice(0, last).filter(Boolean).length;
           const n = rowCrosses(sheet, row, options);
           // Une rangée fermée (par n'importe quel joueur) n'accepte plus de nouvelle croix.
+          // Exception : un autre joueur peut encore la fermer pendant le même lancer (dernier nombre + cadenas).
           // Retirer une croix reste possible pour corriger une erreur de saisie.
           const rowClosed = closed.has(row.key);
           const closedByOther = rowClosed && !sheet.locks[row.key];
+          const closers = ctx.players.filter((_, j) => ctx.data[j].locks[row.key]);
           return h('div', { class: `qrow${closedByOther ? ' closed' : ''}`, style: `--row:${row.color}` },
             h('div', { class: 'qcells' },
               row.numbers.map((num, k) => h('button', {
                 type: 'button',
                 class: `qcell${cells[k] ? ' x' : ''}`,
                 // Le dernier nombre n'est cochable qu'avec au moins 5 croix dans la rangée.
-                disabled: !cells[k] && (rowClosed || (k === last && before < 5)),
+                disabled: !cells[k] && (k === last ? before < 5 : rowClosed),
                 'aria-pressed': String(cells[k]),
                 'aria-label': `${row.label} ${num}`,
                 onclick: () => {
+                  if (k === last && !cells[k] && closedByOther) {
+                    if (!confirm(`La rangée ${row.label.toLowerCase()} est déjà fermée par ${closers.join(', ')}.\n\nFermer aussi la rangée pour ${ctx.players[i]} ? Ce n’est permis que pendant le même lancer.`)) return;
+                    sheet.locks[row.key] = true;
+                  }
                   cells[k] = !cells[k];
                   if (k === last && !cells[k]) sheet.locks[row.key] = false;
                   changed();
