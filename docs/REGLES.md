@@ -144,6 +144,17 @@ Légende :
 - ⚠️ Égalité en fin de partie : victoire partagée (le livret ne précise rien).
 - Sources : [règles FR](https://media.play-in.com/pdf/rules_games/skyjo_regles_fr.pdf), [Skyjo Action FR](https://media.play-in.com/pdf/rules_games/skyjo_action_regles_fr.pdf)
 
+## 421
+
+- ⚠️ Les règles varient d'une région à l'autre. L'appli suit [regles-du-jeu.net](https://www.regles-du-jeu.net/regles-du-jeux-du-421/) :
+  - 21 jetons ;
+  - 4-2-1 = 10 jetons, 1-1-1 = 7 ;
+  - 1-1-X ou brelan de X = X jetons ;
+  - suite = 2, autres combinaisons = 1 ;
+  - nénette (2-2-1) = 2 jetons pour celui qui la fait.
+- Le nombre de jetons, la valeur du 4-2-1 et la règle de la nénette sont réglables à la création de la partie.
+- Charge : le plus mauvais lancer prend au pot autant de jetons que vaut la meilleure combinaison. Décharge : le meilleur lancer donne ce nombre de ses propres jetons au plus mauvais. Un joueur sans jeton en décharge est libéré ; le dernier qui en a encore perd.
+
 ## Dix (Lucky Duck Games, édition française de TEN)
 
 - ✅ 1 point par carte de la plus longue suite de chaque couleur ; une suite de 1 à 9 vaut 10. Égalité : la monnaie restante, puis le moins de cartes.

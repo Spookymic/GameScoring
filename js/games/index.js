@@ -16,8 +16,9 @@ import pikomino from './pikomino.js';
 import encore from './encore.js';
 import skyjo from './skyjo.js';
 import dix from './dix.js';
+import dice421 from './dice421.js';
 import custom from './custom.js';
 
-export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, custom];
+export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, custom];
 
 export const getGame = (id) => GAMES.find((g) => g.id === id);

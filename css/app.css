@@ -481,3 +481,35 @@ textarea.text { padding: 10px 12px; resize: vertical; font: inherit; line-height
 .qsum.neutral { background: var(--surface-2); color: var(--text); }
 
 .app-version { margin: 8px 0 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+
+/* 421 */
+.jetons { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+.jeton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  background: var(--surface);
+}
+.jeton strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.jeton small { color: var(--muted); font-size: 0.75rem; }
+.jeton.free { opacity: 0.5; }
+.combo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 6px; }
+.combo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+}
+.combo strong { font-size: 0.8rem; color: var(--muted); }
+.combo.on { background: var(--primary); border-color: var(--primary); color: var(--primary-text); }
+.combo.on strong { color: inherit; }

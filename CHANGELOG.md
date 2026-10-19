@@ -2,6 +2,16 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.3.0] - 2026-10-19
+
+### Ajouté
+
+- **421** : suivi des jetons en charge puis en décharge.
+  - À chaque tour, on choisit la meilleure combinaison et les joueurs concernés ; l'appli déplace les jetons.
+  - Les joueurs sans jeton en décharge sont libérés, et le dernier qui a encore des jetons perd la partie.
+  - Plusieurs parties s'enchaînent : le score est le nombre de défaites, le plus petit gagne.
+  - On règle le nombre de jetons, la valeur du 4-2-1 et la règle de la nénette.
+
 ## [1.2.0] - 2026-10-19
 
 ### Ajouté
@@ -72,6 +82,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.3.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.3.0
 [1.2.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.2.0
 [1.1.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.0
