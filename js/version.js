@@ -1,2 +1,2 @@
 // Version affichée dans l'application. À garder identique à "version" dans package.json.
-export const VERSION = '1.3.0';
+export const VERSION = '1.4.0';

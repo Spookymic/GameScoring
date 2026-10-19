@@ -1,6 +1,6 @@
 // Service worker : met l'application en cache pour un usage hors ligne.
 // Incrémenter CACHE à chaque modification des fichiers listés.
-const CACHE = 'gamescoring-v9';
+const CACHE = 'gamescoring-v10';
 const ASSETS = [
   './',
   'index.html',
@@ -18,6 +18,7 @@ const ASSETS = [
   'js/games/qwixx.js',
   'js/games/mtg.js',
   'js/games/lorcana.js',
+  'js/games/swu.js',
   'js/games/pixies.js',
   'js/games/seasalt.js',
   'js/games/courtisans.js',

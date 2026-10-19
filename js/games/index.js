@@ -8,6 +8,7 @@ import akropolis from './akropolis.js';
 import qwixx from './qwixx.js';
 import mtg from './mtg.js';
 import lorcana from './lorcana.js';
+import swu from './swu.js';
 import pixies from './pixies.js';
 import seasalt from './seasalt.js';
 import courtisans from './courtisans.js';
@@ -19,6 +20,6 @@ import dix from './dix.js';
 import dice421 from './dice421.js';
 import custom from './custom.js';
 
-export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, custom];
+export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, swu, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, custom];
 
 export const getGame = (id) => GAMES.find((g) => g.id === id);

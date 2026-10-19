@@ -16,6 +16,7 @@ C'est une PWA (application web installable) : elle fonctionne hors ligne, garde 
 | Qwixx | Feuille à cocher par joueur : rangées cochées de gauche à droite, cadenas (fermeture possible par plusieurs joueurs au même lancer), pénalités, fin de partie détectée | Big Points, Bonus (version B), Connected ; Mixx, X-Change et Characters ne changent pas le décompte |
 | Magic: The Gathering | Points de vie, poison, dégâts de commandant ; en duel, la carte du haut est retournée | Classique (20), Commander (40), Brawl (25 / 30) |
 | Lorcana | Compteur de lore, objectif modifiable pour chaque joueur | Format Coconut (25), effet « adversaires à 25 » |
+| Star Wars: Unlimited | Dégâts sur la base de chaque joueur, PV de la base réglables, jeton d'initiative ; en duel, la carte du haut est retournée | Twin Suns (3-4 joueurs) : jeton blast, la base qui a le plus de PV restants gagne |
 | Pixies | 3 manches : cartes validées, spirales, croix, plus grande zone × 2 / 3 / 4 | Flower Power (cartes face cachée à 5 points, jusqu'à 6 joueurs) |
 | Sea Salt & Paper | Calculateur de cartes par joueur ; fin de manche STOP, Dernière chance ou pioche vide ; 4 sirènes | Extra Salt, Extra Pepper (événement de la manche) |
 | Courtisans | Statut de chaque famille à la table de la reine, cartes de chaque famille dans le domaine, missions (+3) | Diplomates & Confidents (jusqu'à 6 joueurs, mode équipes) |

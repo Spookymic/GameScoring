@@ -71,6 +71,13 @@ Légende :
 - Non pris en charge : Illumineer's Quest (coopératif).
 - Sources : [Comprehensive Rules](https://files.disneylorcana.com/Disney-Lorcana-Comprehensive-Rules-082225-EN.pdf), [Format Coconut](https://www.disneylorcana.com/en-US/news/2026/07/format-coconut)
 
+## Star Wars: Unlimited
+
+- ✅ Une base est détruite quand ses dégâts atteignent ses PV, et son propriétaire perd. Sources : [quickstart](https://cdn.xzone.sk/docs/sw_unlimited_quickstart_rules.pdf), [Tabletop Gaming](https://tabletopgaming.co.uk/Features/everything-you-need-to-know-to-play-star-wars-unlimited).
+- ✅ Twin Suns (3-4 joueurs) : la partie s'arrête quand une base est détruite, et le joueur dont la base a le plus de PV restants gagne. Le jeton « blast » inflige 1 dégât à la base de chaque adversaire. Sources : [Twin Suns](https://starwarsunlimited.com/articles/twin-suns), [CardGamer](https://cardgamer.com/guides/how-to-play-star-wars-unlimited-twin-suns/).
+- ⚠️ Les PV dépendent de la base jouée ; 30 est la valeur du quickstart. On les règle pour chaque joueur.
+- Non pris en charge : les matchs en 2 manches gagnantes ; chaque partie est enregistrée séparément.
+
 ## Pixies (Bombyx)
 
 - ✅ 3 manches. Une manche se compte ainsi :

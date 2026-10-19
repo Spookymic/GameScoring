@@ -2,6 +2,16 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.4.0] - 2026-10-19
+
+### Ajouté
+
+- **Star Wars: Unlimited** : suivi des dégâts sur la base de chaque joueur.
+  - Les PV de chaque base sont réglables (30 par défaut).
+  - Le jeton d'initiative se donne d'un toucher.
+  - Une alerte s'affiche quand une base est détruite.
+  - À 3 ou 4 joueurs (format Twin Suns) : bouton « blast » (1 dégât à chaque adversaire), et la base qui a le plus de PV restants gagne.
+
 ## [1.3.0] - 2026-10-19
 
 ### Ajouté
@@ -82,6 +92,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.4.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.4.0
 [1.3.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.3.0
 [1.2.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.2.0
 [1.1.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.1

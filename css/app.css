@@ -513,3 +513,7 @@ textarea.text { padding: 10px 12px; resize: vertical; font: inherit; line-height
 .combo strong { font-size: 0.8rem; color: var(--muted); }
 .combo.on { background: var(--primary); border-color: var(--primary); color: var(--primary-text); }
 .combo.on strong { color: inherit; }
+
+/* Star Wars: Unlimited */
+.base-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.base-tags .chip { white-space: nowrap; }
