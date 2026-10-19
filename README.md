@@ -13,7 +13,7 @@ C'est une PWA (application web installable) : elle fonctionne hors ligne, garde 
 | Harmonies | Tableau par catégorie, cubes animaux pour départager | Esprits de la nature, Pulse, Crescendo (faces C et D, Sanctuaires, Murmures) |
 | Les œufs sont faits | Calculateur de tour : œufs au plat, œuf dur, poulets (piste 1-2-3-4-5-4-3-2-1), œufs pourris ; fin au-delà de 99 points | Aucune extension n'existe |
 | Akropolis | Étoiles × quartiers pour chaque couleur, plus les pierres (qui départagent) | Athena (statue : 5 points par pierre), les 5 variantes officielles qui doublent des points |
-| Qwixx | Feuille à cocher par joueur : rangées, cadenas, pénalités, fin de partie détectée | Big Points, Bonus (version B), Connected ; Mixx, X-Change et Characters ne changent pas le décompte |
+| Qwixx | Feuille à cocher par joueur : rangées cochées de gauche à droite, cadenas (fermeture possible par plusieurs joueurs au même lancer), pénalités, fin de partie détectée | Big Points, Bonus (version B), Connected ; Mixx, X-Change et Characters ne changent pas le décompte |
 | Magic: The Gathering | Points de vie, poison, dégâts de commandant ; en duel, la carte du haut est retournée | Classique (20), Commander (40), Brawl (25 / 30) |
 | Lorcana | Compteur de lore, objectif modifiable pour chaque joueur | Format Coconut (25), effet « adversaires à 25 » |
 | Pixies | 3 manches : cartes validées, spirales, croix, plus grande zone × 2 / 3 / 4 | Flower Power (cartes face cachée à 5 points, jusqu'à 6 joueurs) |

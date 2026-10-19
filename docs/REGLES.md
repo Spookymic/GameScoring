@@ -41,6 +41,11 @@ Légende :
 ## Qwixx (NSV)
 
 - ✅ Barème n(n+1)/2. Le cadenas compte comme une croix. Il faut 5 croix pour cocher le dernier nombre. Pénalité −5. Fin à 2 rangées fermées ou à 4 pénalités.
+- ✅ Saisie contrôlée par l'appli :
+  - on coche de gauche à droite : un nombre à gauche de la dernière croix n'est plus cochable ;
+  - une rangée fermée n'accepte plus de croix, chez aucun joueur ;
+  - retirer une croix reste toujours possible, pour corriger une erreur.
+- ⚠️ Plusieurs joueurs peuvent fermer la même rangée pendant le même lancer. L'appli ne suit pas les lancers : elle demande confirmation quand un joueur coche le dernier nombre d'une rangée déjà fermée par un autre.
 - ✅ Big Points : une case bonus compte pour les deux couleurs voisines, avec 15 croix au plus par couleur.
 - ✅ Bonus (version B) : ×2 sur la rangée la plus faible, +13 points, pénalités à 0.
 - ✅ Connected : les marches forment une 5e ligne de score.
