@@ -14,7 +14,11 @@ js/dom.js               h() pour créer des éléments, uid()
 js/version.js           numéro de version affiché en bas de l'accueil
 js/store.js             persistance dans localStorage
 js/components.js        composants partagés par les jeux
-js/games/index.js       liste des jeux (GAMES) et getGame()
+js/players.js           couleurs et avatars des joueurs
+js/stats.js             calculs des statistiques (classement, séries, face-à-face)
+js/chart.js             courbe de l'évolution des scores (SVG)
+js/tools.js             boîte à outils de partie : dés, premier joueur, minuteur
+js/games/index.js       liste des jeux (GAMES), getGame() et catégories de l'accueil
 js/games/<jeu>.js       un module par jeu
 icons/                  icônes de l'application (PNG générés + SVG)
 tools/serve.mjs         serveur statique de développement
@@ -27,14 +31,17 @@ La navigation passe par le hash de l'URL. `route()` dans [js/app.js](../js/app.j
 
 | Hash | Écran |
 | --- | --- |
-| `#/` | Accueil : partie en cours, liste des jeux, liens vers l'historique et les statistiques |
+| `#/` | Accueil : partie en cours, jeux récents, recherche, catégories et favoris, liens vers l'historique, les statistiques et les joueurs |
 | `#/new/<id>` | Préparation : joueurs, extensions, options |
 | `#/play` | Partie en cours, affichée par le module du jeu |
-| `#/result/<id>` | Classement d'une partie terminée, revanche, suppression |
+| `#/result/<id>` | Classement d'une partie terminée, évolution des scores, revanche, partage, modification, suppression |
 | `#/history` | Parties terminées |
-| `#/stats` | Statistiques par jeu et par joueur, export et import JSON |
+| `#/stats` | Vue d'ensemble, classement général, face-à-face, détail par jeu ; envoi, export et import de la sauvegarde |
+| `#/players` | Joueurs : renommer, fusionner, avatar, couleur, retrait de la liste rapide |
 
 Le bouton retour d'Android fonctionne naturellement, puisque chaque écran a sa propre entrée dans l'historique du navigateur.
+
+Le démarrage (`route()` et le service worker) est placé à la fin de [js/app.js](../js/app.js) : les constantes du fichier doivent être initialisées avant le premier affichage.
 
 Un écran peut définir `cleanup`, appelé au changement d'écran. L'écran de partie s'en sert pour libérer le verrou qui garde l'écran allumé (Wake Lock).
 
@@ -44,12 +51,15 @@ Tout est stocké sous la clé `gamescoring:v1` de `localStorage` ([js/store.js](
 
 ```js
 {
-  players: ['Alice', 'Bob'],   // joueurs connus, du plus récent au plus ancien
+  players: ['Alice', 'Bob'],   // liste rapide des joueurs, du plus récent au plus ancien
+  profiles: { Alice: { avatar: '🦊', color: 2 } }, // avatar et couleur (indice 0 à 7) choisis
+  favorites: ['qwixx'],        // jeux favoris de l'accueil
   current: {                   // partie en cours, ou null
     id, gameId, startedAt,
     players: ['Alice', 'Bob'],
     options: { ..., expansions: ['athena'] },
-    data: { ... }              // propre à chaque jeu, créé par game.init()
+    data: { ... },             // propre à chaque jeu, créé par game.init()
+    editing: true              // présent quand on modifie une partie terminée (même id)
   },
   history: [{                  // parties terminées, de la plus récente à la plus ancienne
     id, gameId, startedAt, endedAt, players, options,
@@ -57,7 +67,9 @@ Tout est stocké sous la clé `gamescoring:v1` de `localStorage` ([js/store.js](
     winners: [0],              // indices des gagnants
     lowerWins: false,          // vrai si le plus petit score gagne
     unit: 'pts',
-    details: ['🌳 7 · ⛰️ 3']   // résumé facultatif par joueur
+    details: ['🌳 7 · ⛰️ 3'],  // résumé facultatif par joueur
+    data: { ... },             // état final du jeu (depuis 1.6) : modification et graphique
+    editedAt                   // date de la dernière modification, s'il y en a eu une
   }]
 }
 ```
@@ -65,6 +77,9 @@ Tout est stocké sous la clé `gamescoring:v1` de `localStorage` ([js/store.js](
 Les points importants :
 - La partie en cours est sauvegardée à chaque modification, via `ctx.save()`. Fermer l'appli ne perd donc rien.
 - Les scores sont figés dans l'historique au moment de « Terminer ». Une correction future d'une règle ne modifie pas les anciennes parties.
+- Depuis la version 1.6, chaque partie terminée garde aussi l'état du jeu (`data`). On peut donc la **modifier** : « Modifier » la rouvre comme partie en cours, avec le même `id`, et « Enregistrer » remplace l'ancienne version. Les parties plus anciennes n'ont pas cet état et ne sont pas modifiables.
+- **Renommer un joueur** modifie son nom dans tout l'historique et dans la partie en cours. Si le nouveau nom existe déjà, les deux joueurs fusionnent, sauf s'ils ont joué une même partie.
+- **Couleurs** : chaque joueur garde la couleur choisie dans son profil quand elle est libre ; les autres prennent les couleurs restantes dans l'ordre (`colorsFor` dans [js/players.js](../js/players.js)). La palette de 8 couleurs (`--p1` à `--p8`, une version claire et une sombre) a été validée pour le daltonisme.
 - L'export produit ce même JSON, sans la partie en cours. L'import fusionne les parties par `id` : un même fichier importé deux fois ne crée pas de doublon.
 
 ## Mode hors ligne
@@ -95,6 +110,21 @@ Pour que les mises à jour arrivent sur les téléphones :
 | `winnersBy(scores, lowerWins)` | Indices des meilleurs scores |
 | `hasExpansion(options, key)` | Vrai si l'extension est cochée |
 | `sum(values)`, `PLAYER_COLORS` | Utilitaires |
+
+## Statistiques et graphique
+
+- [js/stats.js](../js/stats.js) calcule le classement d'une partie (les égalités partagent le même rang), puis, par joueur :
+  - parties jouées et victoires ;
+  - record ;
+  - meilleure série de victoires ;
+  - rang moyen.
+
+  Il calcule aussi le face-à-face entre deux joueurs : sur leurs parties communes, qui a fini devant l'autre.
+- [js/chart.js](../js/chart.js) dessine l'évolution des scores pour les jeux qui fournissent `timeline`. La courbe affiche :
+  - des traits de 2 px et une légende ;
+  - les noms au bout des courbes jusqu'à 4 joueurs ;
+  - une infobulle au toucher ;
+  - une vue « tableau ».
 
 ## Tests
 

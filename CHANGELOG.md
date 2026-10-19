@@ -2,6 +2,29 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.6.0] - 2026-10-19
+
+### Ajouté
+
+- **Gestion des joueurs** (écran « Joueurs ») :
+  - renommer un joueur dans tout l'historique, ou le fusionner avec un autre ;
+  - avatar et couleur gardés d'une partie à l'autre ;
+  - retrait de la liste rapide.
+- **Modifier une partie terminée** : elle se rouvre telle qu’elle était, et « Enregistrer » remplace le résultat. Cela concerne les parties terminées à partir de cette version.
+- **Accueil** : jeux joués récemment, recherche, catégories et favoris.
+- **Partager un résultat** : partage natif d'Android (WhatsApp, SMS…), ou copie dans le presse-papiers.
+- **Boîte à outils en partie** : dés (ceux du 421, de Qwixx, de Pikomino et des Œufs sont faits sont préréglés), tirage du premier joueur, minuteur avec vibration et bip.
+- **Évolution des scores** : courbe manche par manche dans la partie et sur le résultat, avec infobulle et vue en tableau.
+- **Statistiques** :
+  - vue d'ensemble et classement général tous jeux confondus ;
+  - meilleure série de victoires et rang moyen ;
+  - face-à-face entre deux joueurs.
+- **Envoi de la sauvegarde** vers un autre téléphone, par le partage de fichier.
+
+### Modifié
+
+- Couleurs des joueurs : nouvelle palette de 8 couleurs validée pour le daltonisme, en clair et en sombre.
+
 ## [1.5.0] - 2026-10-19
 
 ### Ajouté
@@ -106,6 +129,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.6.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.6.0
 [1.5.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.5.0
 [1.4.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.4.0
 [1.3.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.3.0

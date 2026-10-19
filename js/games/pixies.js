@@ -1,5 +1,5 @@
 import { h } from '../dom.js';
-import { hasExpansion, playerTabs, scoreGrid, sum, winnersBy } from '../components.js';
+import { cumulate, hasExpansion, playerTabs, scoreGrid, sum, winnersBy } from '../components.js';
 
 const ROUNDS = 3;
 const zoneValue = (round) => round + 2; // 2 / 3 / 4 points par carte de la plus grande zone
@@ -55,6 +55,8 @@ export default {
     root.append(h('h2', { class: 'section-title' }, 'Total de la partie'), summary, tabs.el,
       h('p', { class: 'muted small' }, 'Une zone compte au moins 2 cartes de même couleur reliées orthogonalement. La carte multicolore compte pour toutes les couleurs.'));
   },
+
+  timeline: ({ data, options }) => ({ points: cumulate(data.map((round, r) => round.map((sheet) => roundScore(sheet, options, r)))) }),
 
   results({ data, options, players }) {
     const scores = players.map((_, i) => total(data, options, i));

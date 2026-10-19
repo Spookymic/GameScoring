@@ -1,7 +1,7 @@
 // 421 : charge (on prend des jetons au pot) puis décharge (on se les renvoie) ;
 // le dernier joueur qui a encore des jetons perd la partie.
 import { h } from '../dom.js';
-import { banner, PLAYER_COLORS } from '../components.js';
+import { banner, cumulate, PLAYER_COLORS } from '../components.js';
 
 const NENETTE_TOKENS = 2; // la nénette (2-2-1) donne toujours 2 jetons à celui qui la fait
 
@@ -50,6 +50,7 @@ export default {
   minPlayers: 2,
   maxPlayers: 10,
   showBest: false,
+  dice: { count: 3, sides: 6 },
   options: [
     { key: 'tokens', type: 'number', label: 'Jetons dans le pot', default: 21, hint: '21 en général, parfois 11' },
     { key: 'value421', type: 'number', label: 'Valeur du 4-2-1', default: 10, hint: '10 en général, 8 dans certaines règles' },
@@ -141,6 +142,12 @@ export default {
       ].filter(Boolean));
     }
   },
+
+  timeline: ({ data, players }) => ({
+    points: cumulate(data.parties.filter((p) => p.loser !== null).map((p) => players.map((_, i) => (p.loser === i ? 1 : 0)))),
+    unit: 'défaites',
+    roundLabel: 'Partie',
+  }),
 
   results({ data, players }) {
     const scores = losses(data, players.length);

@@ -1,6 +1,6 @@
 // Flip 7 (et Flip 7 Vengeance) : calculateur de manche par joueur, partie en 200 points.
 import { h } from '../dom.js';
-import { banner, PLAYER_COLORS, playerTabs, winnersBy } from '../components.js';
+import { banner, cumulate, PLAYER_COLORS, playerTabs, winnersBy } from '../components.js';
 
 const TARGET = 200;
 const FLIP7_BONUS = 15;
@@ -167,6 +167,8 @@ export default {
     drawAll();
     root.append(header, tabs.el, footer);
   },
+
+  timeline: ({ data }) => ({ points: cumulate(data.rounds) }),
 
   results({ data, players }) {
     const scores = totals(data, players.length);

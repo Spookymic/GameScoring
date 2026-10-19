@@ -35,11 +35,23 @@ Les extensions se cochent au moment de créer la partie. Les options qui dépend
 
 Pour tous les jeux :
 
-- la partie en cours est sauvegardée en continu ;
-- on peut lancer une revanche avec les mêmes joueurs ;
-- l'appli tient un historique et des statistiques par joueur (victoires, record) ;
-- on peut exporter et importer les données en JSON, depuis l'écran « Statistiques » ;
-- l'écran reste allumé pendant une partie.
+- **Accueil** : jeux joués récemment, recherche, catégories (cartes, dés, plateau, cartes à collectionner) et jeux favoris (★).
+- **Joueurs** : renommer ou fusionner un joueur, lui donner un avatar et une couleur gardée d'une partie à l'autre.
+- **Pendant la partie** :
+  - sauvegarde continue ;
+  - écran toujours allumé ;
+  - boîte à outils 🧰 : dés (ceux du jeu quand il en a), tirage du premier joueur, minuteur avec alarme ;
+  - courbe de l'évolution des scores pour les jeux en manches.
+- **Après la partie** : classement et courbe des scores. On peut aussi :
+  - lancer une revanche ;
+  - **partager** le résultat (WhatsApp, SMS…) ;
+  - **modifier** la partie pour corriger une erreur.
+- **Statistiques** :
+  - vue d'ensemble et classement général ;
+  - séries de victoires et rang moyen ;
+  - **face-à-face** entre deux joueurs ;
+  - détail par jeu.
+- **Sauvegarde** : envoi du fichier vers un autre téléphone, export et import JSON sans doublon.
 
 Les sources des règles et les points encore à confirmer sont listés dans [docs/REGLES.md](docs/REGLES.md).
 

@@ -1,6 +1,6 @@
 // Feuille de score générique : le joueur choisit le nom, le mode de saisie, les catégories et la règle de victoire.
 import { h } from '../dom.js';
-import { banner, numInput, PLAYER_COLORS, scoreGrid, sum, winnersBy } from '../components.js';
+import { banner, cumulate, numInput, PLAYER_COLORS, scoreGrid, sum, winnersBy } from '../components.js';
 
 const MAX_CATEGORIES = 30;
 
@@ -128,6 +128,8 @@ export default {
     draw();
     root.append(endBanner, h('p', { class: 'muted small' }, rules), wrap, actions);
   },
+
+  timeline: ({ data, options }) => (options.mode === 'categories' ? null : { points: cumulate(data.rounds) }),
 
   results({ data, options, players }) {
     const scores = totals(data, options, players.length);

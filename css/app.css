@@ -12,6 +12,9 @@
   --win: #b45309;
   --radius: 14px;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 4px 14px rgb(0 0 0 / 0.06);
+  /* Couleurs des joueurs : palette catégorielle validée (daltonisme), clair et sombre */
+  --p1: #2a78d6; --p2: #eb6834; --p3: #1baf7a; --p4: #eda100;
+  --p5: #e87ba4; --p6: #008300; --p7: #6250d6; --p8: #e34948;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +30,8 @@
     --danger: #f87171;
     --win: #fbbf24;
     --shadow: none;
+    --p1: #3987e5; --p2: #d95926; --p3: #199e70; --p4: #c98500;
+    --p5: #d55181; --p6: #008300; --p7: #9085e9; --p8: #e66767;
   }
 }
 
@@ -517,3 +522,161 @@ textarea.text { padding: 10px 12px; resize: vertical; font: inherit; line-height
 /* Star Wars: Unlimited */
 .base-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .base-tags .chip { white-space: nowrap; }
+
+/* ---------- 1.6 : accueil */
+.game-card-wrap { position: relative; }
+.game-card-wrap .game-card { height: 100%; }
+.fav {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.fav.on { color: var(--win); }
+.recent-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.recent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: var(--surface);
+  text-align: center;
+}
+.recent .game-icon { font-size: 1.5rem; }
+.title-link { float: right; text-transform: none; letter-spacing: 0; color: var(--primary); font-weight: 600; }
+.selected-players li { border-left: 4px solid var(--accent, var(--border)); }
+
+/* ---------- 1.6 : joueurs */
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 4px; flex: none; }
+.swatch.big { width: 18px; height: 18px; border-radius: 6px; }
+.avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+.avatar {
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.avatar.on { border-color: var(--primary); outline: 2px solid var(--primary); }
+.swatch-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.swatch-btn.auto { width: auto; padding: 0 10px; border-radius: 18px; border-color: var(--border); background: var(--surface); font-size: 0.8rem; }
+.swatch-btn.on { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* ---------- 1.6 : partie */
+.edit-banner { margin: 12px 16px 0; font-weight: 500; font-size: 0.9rem; }
+.evolution summary { cursor: pointer; font-weight: 600; }
+.evolution[open] summary { margin-bottom: 10px; }
+
+dialog.tools {
+  width: min(520px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+}
+dialog.tools::backdrop { background: rgb(0 0 0 / 0.55); }
+dialog.tools > * + * { margin-top: 12px; }
+.tools-head { display: flex; align-items: center; justify-content: space-between; font-size: 1.1rem; }
+.dice-out { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; min-height: 56px; }
+.die {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 1.6rem;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+.dice-out.rolled .die { animation: roll 0.35s ease-out; }
+@keyframes roll {
+  from { transform: rotate(-25deg) scale(0.7); opacity: 0.3; }
+  to { transform: none; opacity: 1; }
+}
+.first-player { min-height: 2.4em; text-align: center; font-size: 1.6rem; font-weight: 800; }
+.timer-display { margin: 0; text-align: center; font-size: 3.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.timer-display.done { color: var(--danger); animation: blink 0.6s 4; }
+@keyframes blink { 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) {
+  .dice-out.rolled .die, .timer-display.done { animation: none; }
+}
+
+/* ---------- 1.6 : graphique */
+.chart { display: flex; flex-direction: column; gap: 8px; }
+.chart-wrap { position: relative; }
+.chart-svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+.chart-grid { stroke: var(--border); stroke-width: 1; }
+.chart-axis { fill: var(--muted); font-size: 10px; }
+.chart-label { fill: var(--text); font-size: 10px; font-weight: 600; }
+.chart-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart-dot { stroke: var(--surface); stroke-width: 2; }
+.chart-cross { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart-tip {
+  position: absolute;
+  top: 0;
+  min-width: 140px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+.chart-tip-row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 0.8rem; color: var(--muted); }
+.chart-legend-item { display: inline-flex; align-items: center; gap: 6px; color: var(--text); }
+.chart-table summary { cursor: pointer; font-size: 0.85rem; color: var(--muted); }
+
+/* ---------- 1.6 : statistiques */
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.tile strong { font-size: 1.4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tile span { color: var(--muted); font-size: 0.8rem; }
+.grid-wrap.plain { border: 0; background: transparent; }
+.duel-pick { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; }
+.duel-score { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; text-align: center; }
+.duel-score strong { display: block; font-size: 2rem; }
+.duel-score small { color: var(--muted); }
+.game-root { display: flex; flex-direction: column; gap: 18px; }

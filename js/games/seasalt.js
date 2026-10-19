@@ -1,5 +1,5 @@
 import { h } from '../dom.js';
-import { banner, hasExpansion, PLAYER_COLORS, playerTabs, stepper } from '../components.js';
+import { banner, cumulate, hasExpansion, PLAYER_COLORS, playerTabs, stepper } from '../components.js';
 
 const TARGETS = { 2: 40, 3: 35, 4: 30 };
 const COLLECTIONS = {
@@ -251,6 +251,8 @@ export default {
     drawAll();
     root.append(header, h('h3', { class: 'section-title' }, 'Cartes de chaque joueur'), tabs.el, endSection, history);
   },
+
+  timeline: ({ data }) => ({ points: cumulate(data.rounds.map((r) => r.scores)) }),
 
   results({ data, players }) {
     const scores = totals(data, players.length);

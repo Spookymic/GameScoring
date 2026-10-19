@@ -1,6 +1,6 @@
 // 6 qui prend ! : on additionne les têtes de bœuf ramassées à chaque manche ; le plus petit total gagne.
 import { h } from '../dom.js';
-import { banner, numInput, PLAYER_COLORS, winnersBy } from '../components.js';
+import { banner, cumulate, numInput, PLAYER_COLORS, winnersBy } from '../components.js';
 
 const MAX_CARD = 104;
 const SURPRISE_ROUNDS = 2; // 6 qui surprend ! : exactement 2 manches
@@ -138,6 +138,8 @@ export default {
       refreshRound();
     }
   },
+
+  timeline: ({ data }) => ({ points: cumulate(data.rounds), unit: 'têtes' }),
 
   results({ data, players }) {
     const scores = totals(data, players.length);

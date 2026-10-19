@@ -1,5 +1,5 @@
 import { h } from '../dom.js';
-import { banner, hasExpansion, numInput, PLAYER_COLORS, winnersBy } from '../components.js';
+import { banner, cumulate, hasExpansion, numInput, PLAYER_COLORS, winnersBy } from '../components.js';
 
 const END_SCORE = 100;
 
@@ -93,6 +93,8 @@ export default {
       refresh();
     }
   },
+
+  timeline: ({ data }) => ({ points: cumulate(data.rounds.map((r) => r.scores)) }),
 
   results({ data, players }) {
     const scores = totals(data, players.length);

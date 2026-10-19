@@ -17,6 +17,7 @@ export default {
   tagline: 'Vers sur les pickominos',
   minPlayers: 2,
   maxPlayers: 7,
+  dice: { count: 8, sides: 6, labels: { 6: '🪱' } },
   expansions: [
     { key: 'extrawurm', name: 'Extension (Extrawurm)', description: 'Pickominos 11 et 13, vers grillés à +1' },
   ],

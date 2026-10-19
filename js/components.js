@@ -1,8 +1,16 @@
 import { h } from './dom.js';
 
-export const PLAYER_COLORS = ['#ef4444', '#3b82f6', '#22c55e', '#eab308', '#a855f7', '#f97316'];
+// Couleurs des joueurs de la partie affichée (remplies par applyPlayerColors dans js/players.js).
+export const PLAYER_COLORS = Array.from({ length: 8 }, (_, k) => `var(--p${k + 1})`);
 
 export const hasExpansion = (options, key) => Boolean(options?.expansions?.includes(key));
+
+// Cumul ligne à ligne : rows[manche][joueur] -> total de chaque joueur après chaque manche.
+export function cumulate(rows) {
+  const out = [];
+  rows.forEach((row, k) => out.push(row.map((v, i) => (k ? out[k - 1][i] : 0) + (Number(v) || 0))));
+  return out;
+}
 
 export const sum =(values) => values.reduce((a, b) => a + (Number(b) || 0), 0);
 

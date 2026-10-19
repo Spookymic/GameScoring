@@ -26,3 +26,21 @@ import custom from './custom.js';
 export const GAMES = [harmonies, oeufs, akropolis, qwixx, mtg, lorcana, swu, pixies, seasalt, courtisans, faraway, pikomino, encore, skyjo, dix, dice421, flip7, uno, sixquiprend, custom];
 
 export const getGame = (id) => GAMES.find((g) => g.id === id);
+
+// Catégories de l'accueil.
+export const CATEGORIES = [
+  { key: 'cartes', label: '🃏 Cartes' },
+  { key: 'des', label: '🎲 Dés' },
+  { key: 'plateau', label: '🧩 Plateau' },
+  { key: 'jcc', label: '⚔️ Cartes à collectionner' },
+  { key: 'autre', label: '📝 Autres' },
+];
+const CATEGORY_OF = {
+  harmonies: 'plateau', akropolis: 'plateau',
+  oeufs: 'des', qwixx: 'des', pikomino: 'des', encore: 'des', dice421: 'des',
+  mtg: 'jcc', lorcana: 'jcc', swu: 'jcc',
+  pixies: 'cartes', seasalt: 'cartes', courtisans: 'cartes', faraway: 'cartes', skyjo: 'cartes', dix: 'cartes',
+  flip7: 'cartes', uno: 'cartes', sixquiprend: 'cartes',
+  custom: 'autre',
+};
+export const categoryOf = (game) => CATEGORY_OF[game.id] ?? 'autre';

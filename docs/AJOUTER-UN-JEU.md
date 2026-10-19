@@ -5,7 +5,7 @@ Un jeu est un module de [js/games/](../js/games/) qui exporte par défaut un obj
 ## Étapes
 
 1. Créer `js/games/monjeu.js` (modèle ci-dessous).
-2. L'importer et l'ajouter au tableau `GAMES` dans [js/games/index.js](../js/games/index.js).
+2. L'importer, l'ajouter au tableau `GAMES` et lui donner une catégorie dans `CATEGORY_OF` ([js/games/index.js](../js/games/index.js)).
 3. Ajouter `'js/games/monjeu.js'` à la liste `ASSETS` de [sw.js](../sw.js), et incrémenter `CACHE`.
 4. Ajouter une ligne au tableau des jeux du [README](../README.md) et au [CHANGELOG](../CHANGELOG.md).
 5. Documenter les sources des règles dans [REGLES.md](REGLES.md).
@@ -22,6 +22,8 @@ Un jeu est un module de [js/games/](../js/games/) qui exporte par défaut un obj
 | `options` | non | Réglages de la partie (voir plus bas) |
 | `titleFor(options)` | non | Nom affiché à la place de `name`, calculé à partir des options (la feuille libre affiche le nom saisi). Utilisé aussi pour regrouper les statistiques. |
 | `templates` | non | `true` pour proposer, à la création, les réglages des parties déjà jouées avec ce jeu |
+| `timeline({ players, options, data })` | non | Pour les jeux en manches : renvoie `{ points, unit?, roundLabel? }`, où `points[manche][joueur]` est le cumul après chaque manche. Active le graphique « Évolution des scores ». `cumulate(lignes)` (components) fait le cumul. |
+| `dice` | non | Dés proposés par l'outil « Dés » : `{ count, sides, labels?, colors?, numeric? }`, par exemple `{ count: 8, sides: 6, labels: { 6: '🪱' } }` |
 | `showBest` | non | `false` pour masquer la colonne « Record » des statistiques (jeux de points de vie, par exemple) |
 | `init(players, options)` | oui | Renvoie l'état initial `data`, qui doit être sérialisable en JSON |
 | `render(root, ctx)` | oui | Construit l'écran de partie dans `root` |
@@ -123,5 +125,7 @@ export default {
 ## Bonnes pratiques
 
 - **Compatibilité des données.** Une partie en cours peut avoir été créée par une version précédente du module. Lisez les champs ajoutés plus tard avec une valeur par défaut, par exemple `sheet.doubled?.[key] ?? 0` ou `data.targets ??= …`.
+- **Couleurs des joueurs.** Utilisez `PLAYER_COLORS[i % PLAYER_COLORS.length]` : l'appli y place les couleurs des joueurs de la partie avant d'afficher le jeu.
+- **Zone de dessin.** `render` reçoit sa propre zone (`root`) : il peut la redessiner entièrement sans effacer les éléments ajoutés par l'appli, comme le graphique.
 - **Mises à jour ciblées.** Ne reconstruisez pas tout l'écran à chaque frappe dans un champ numérique, sinon le clavier se ferme. Mettez à jour seulement les totaux, comme le fait `scoreGrid`.
 - **Règles.** Écrivez à côté du code la règle qu'il applique, en commentaire, et signalez dans [REGLES.md](REGLES.md) ce qui n'a pas pu être confirmé dans un livret officiel.

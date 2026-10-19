@@ -1,6 +1,6 @@
 // Les œufs sont faits : calculateur de tour (œufs au plat, œuf dur, poulets, œufs pourris).
 import { h } from '../dom.js';
-import { banner, PLAYER_COLORS, stepper, winnersBy } from '../components.js';
+import { banner, cumulate, PLAYER_COLORS, stepper, winnersBy } from '../components.js';
 
 const END_SCORE = 100; // la fin est déclenchée dès qu'un joueur dépasse 99
 const CHICKEN_TRACK = [1, 2, 3, 4, 5, 4, 3, 2, 1];
@@ -34,6 +34,7 @@ export default {
   tagline: 'Premier à dépasser 99 points',
   minPlayers: 2,
   maxPlayers: 5,
+  dice: { count: 9, sides: 6, numeric: false, labels: { 1: '🥚', 2: '🐣', 3: '🤢', 4: '🍲', 5: '🍳', 6: '🐔' } },
 
   init: () => ({ turns: [], draft: emptyDraft() }),
 
@@ -131,6 +132,18 @@ export default {
             cumulative.map((c) => h('td', { class: 'total' }, c[r] ?? '')))))))].filter(Boolean));
       refresh();
     }
+  },
+
+  // Un « tour » du graphique = un tour de table complet.
+  timeline({ data, players }) {
+    const n = players.length;
+    const rows = [];
+    data.turns.forEach((t, k) => {
+      const r = Math.floor(k / n);
+      rows[r] ??= players.map(() => 0);
+      rows[r][t.player] += t.points;
+    });
+    return { points: cumulate(rows), roundLabel: 'Tour' };
   },
 
   results({ data, players }) {

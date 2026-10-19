@@ -41,6 +41,7 @@ export default {
   tagline: 'Feuilles de score à cocher',
   minPlayers: 1,
   maxPlayers: 5,
+  dice: { count: 6, sides: 6, colors: ['#ffffff', '#ffffff', '#dc2626', '#ca8a04', '#16a34a', '#2563eb'] },
   expansions: [
     { key: 'bigpoints', name: 'Big Points', description: 'Rangées bonus comptant pour les deux couleurs voisines (15 croix max)' },
     { key: 'bonus', name: 'Bonus (version B)', description: '×2 sur la rangée la plus faible, +13 points, pénalités annulées' },

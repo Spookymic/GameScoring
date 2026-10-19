@@ -1,7 +1,7 @@
 // Uno : à chaque manche, le gagnant marque les points des cartes restées dans la main des autres
 // (ou, en décompte alternatif, chacun marque ses propres points et le plus bas gagne).
 import { h } from '../dom.js';
-import { banner, numInput, PLAYER_COLORS, stepper, winnersBy } from '../components.js';
+import { banner, cumulate, numInput, PLAYER_COLORS, stepper, winnersBy } from '../components.js';
 
 const NUMBERS = { key: 'numbers', label: 'Somme des cartes chiffres' };
 const EDITIONS = {
@@ -177,6 +177,8 @@ export default {
       refresh();
     }
   },
+
+  timeline: ({ data }) => ({ points: cumulate(data.rounds.map((r) => r.points)) }),
 
   results({ data, players, options }) {
     const scores = totals(data, players.length);
