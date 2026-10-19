@@ -8,6 +8,7 @@ Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les n
 
 - Qwixx : une rangée fermée par le cadenas n'accepte plus de nouvelle croix, ni chez le joueur qui l'a fermée, ni chez les autres. Retirer une croix reste possible pour corriger une erreur.
 - Qwixx : un autre joueur peut encore fermer la même rangée pendant le même lancer. Il coche le dernier nombre (avec 5 croix minimum), l'appli demande confirmation puis pose le cadenas.
+- Qwixx : on coche de gauche à droite. Les nombres situés à gauche de la dernière croix d'une rangée ne sont plus cochables.
 
 ## [1.0.0] - 2026-10-19
 

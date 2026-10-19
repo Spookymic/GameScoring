@@ -108,13 +108,15 @@ export default {
           const rowClosed = closed.has(row.key);
           const closedByOther = rowClosed && !sheet.locks[row.key];
           const closers = ctx.players.filter((_, j) => ctx.data[j].locks[row.key]);
+          // On coche de gauche à droite : les nombres à gauche de la dernière croix sont perdus.
+          const rightmost = cells.lastIndexOf(true);
           return h('div', { class: `qrow${closedByOther ? ' closed' : ''}`, style: `--row:${row.color}` },
             h('div', { class: 'qcells' },
               row.numbers.map((num, k) => h('button', {
                 type: 'button',
                 class: `qcell${cells[k] ? ' x' : ''}`,
                 // Le dernier nombre n'est cochable qu'avec au moins 5 croix dans la rangée.
-                disabled: !cells[k] && (k === last ? before < 5 : rowClosed),
+                disabled: !cells[k] && (k < rightmost || (k === last ? before < 5 : rowClosed)),
                 'aria-pressed': String(cells[k]),
                 'aria-label': `${row.label} ${num}`,
                 onclick: () => {
