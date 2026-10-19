@@ -70,6 +70,8 @@ function startGame(game, players, options) {
   go('#/play');
 }
 
+const gameTitle = (game, options) => game.titleFor?.(options) || game.name;
+
 const expansionNames = (game, options) => (game.expansions ?? [])
   .filter((x) => options?.expansions?.includes(x.key))
   .map((x) => x.name);
@@ -84,7 +86,7 @@ function home() {
   return screen('GameScoring', {},
     curGame && h('a', { class: 'resume card', href: '#/play', style: `--accent:${curGame.color}` },
       h('span', { class: 'resume-icon' }, curGame.icon),
-      h('span', { class: 'grow' }, h('strong', null, 'Reprendre la partie'), h('span', { class: 'muted small block' }, `${curGame.name} · ${cur.players.join(', ')}`)),
+      h('span', { class: 'grow' }, h('strong', null, 'Reprendre la partie'), h('span', { class: 'muted small block' }, `${gameTitle(curGame, cur.options)} · ${cur.players.join(', ')}`)),
       h('span', { class: 'chev' }, '›')),
     h('h2', { class: 'section-title' }, 'Nouvelle partie'),
     h('div', { class: 'game-grid' }, GAMES.map((g) => h('a', { class: 'game-card', href: `#/new/${g.id}`, style: `--accent:${g.color}` },
@@ -146,22 +148,50 @@ function setup(gameId) {
   function optionField(o) {
     if (o.type === 'checkbox') {
       return h('label', { class: 'check' },
-        h('input', { type: 'checkbox', checked: options[o.key], onchange: (e) => { options[o.key] = e.target.checked; } }),
+        h('input', { type: 'checkbox', checked: options[o.key], onchange: (e) => { options[o.key] = e.target.checked; drawOptions(); } }),
         h('span', null, o.label));
+    }
+    if (o.type === 'text' || o.type === 'number' || o.type === 'textarea') {
+      const field = h(o.type === 'textarea' ? 'textarea' : 'input', {
+        class: 'text',
+        type: o.type === 'number' ? 'number' : o.type === 'text' ? 'text' : null,
+        value: options[o.key] ?? '',
+        placeholder: o.placeholder,
+        maxLength: o.maxLength,
+        rows: o.type === 'textarea' ? 4 : null,
+        oninput: (e) => { options[o.key] = o.type === 'number' ? Number(e.target.value) || 0 : e.target.value; },
+      });
+      return h('label', { class: 'option stack' }, h('span', null, o.label), field, o.hint && h('small', { class: 'muted' }, o.hint));
     }
     return h('fieldset', { class: 'option' }, h('legend', null, o.label),
       h('div', { class: 'segmented' }, o.choices.filter(available).map((c) => h('label', null,
-        h('input', { type: 'radio', name: o.key, value: c.value, checked: options[o.key] === c.value, onchange: () => { options[o.key] = c.value; } }),
+        h('input', { type: 'radio', name: o.key, value: c.value, checked: options[o.key] === c.value, onchange: () => { options[o.key] = c.value; drawOptions(); } }),
         h('span', null, c.label)))));
   }
 
-  // Une option (ou un choix) marquée `requires` n'apparaît que si l'extension correspondante est cochée.
-  const available = (item) => !item.requires || options.expansions?.includes(item.requires);
+  // Une option (ou un choix) marquée `requires` n'apparaît que si l'extension correspondante est cochée ;
+  // `visible(options)` permet aussi de la faire dépendre d'une autre option.
+  const available = (item) => (!item.requires || options.expansions?.includes(item.requires)) && item.visible?.(options) !== false;
+
+  // Feuilles déjà utilisées (jeux personnalisables) : un toucher recharge leurs réglages.
+  const templates = game.templates
+    ? [...new Map(store.history.filter((e) => e.gameId === game.id).map((e) => [gameTitle(game, e.options), e.options])).entries()]
+    : [];
+  const templatesBox = templates.length > 0 && h('section', { class: 'stack' },
+    h('h2', { class: 'section-title' }, 'Feuilles déjà utilisées'),
+    h('div', { class: 'chips' }, templates.map(([title, saved]) => h('button', {
+      type: 'button',
+      class: 'chip',
+      onclick: () => { Object.assign(options, structuredClone(saved)); drawOptions(); },
+    }, title))));
   const optionsBox = h('section', { class: 'stack' });
   function drawOptions() {
     const visible = (game.options ?? []).filter(available);
     for (const o of game.options ?? []) {
-      const invalid = !available(o) || (o.choices && !o.choices.some((c) => c.value === options[o.key] && available(c)));
+      // Seules les options liées à une extension décochée reviennent à leur valeur par défaut ;
+      // une option simplement masquée garde sa saisie.
+      const requiresOk = (item) => !item.requires || options.expansions?.includes(item.requires);
+      const invalid = !requiresOk(o) || (o.choices && !o.choices.some((c) => c.value === options[o.key] && requiresOk(c)));
       if (invalid) options[o.key] = o.default;
     }
     optionsBox.replaceChildren(...(visible.length ? [h('h2', { class: 'section-title' }, 'Options'), ...visible.map(optionField)] : []));
@@ -185,6 +215,7 @@ function setup(gameId) {
           refresh();
         } }),
         h('span', null, x.name, x.description && h('small', { class: 'muted block' }, x.description))))),
+    templatesBox,
     optionsBox,
     h('div', { class: 'sticky-bottom' }, startBtn));
 }
@@ -247,7 +278,7 @@ function play() {
   const body = h('main', { class: `content play play-${game.id}` });
   game.render(body, ctx);
   return h('div', { class: 'screen' },
-    header(game.name, { back: '#/', actions: h('button', { type: 'button', class: 'btn small primary', onclick: finish }, 'Terminer') }),
+    header(gameTitle(game, cur.options), { back: '#/', actions: h('button', { type: 'button', class: 'btn small primary', onclick: finish }, 'Terminer') }),
     body,
     h('footer', { class: 'play-footer' }, h('button', { type: 'button', class: 'btn ghost', onclick: abandon }, 'Abandonner la partie')));
 }
@@ -274,7 +305,7 @@ function result(id) {
   const game = entry && getGame(entry.gameId);
   if (!game) return redirect('#/history');
 
-  return screen(`${game.icon} ${game.name}`, { back: '#/history' },
+  return screen(`${game.icon} ${gameTitle(game, entry.options)}`, { back: '#/history' },
     h('p', { class: 'muted center' }, dateFmt.format(entry.endedAt),
       expansionNames(game, entry.options).map((name) => h('span', { class: 'block small' }, `🧩 ${name}`))),
     h('ol', { class: 'ranking' }, ranking(entry).map((r) => h('li', { class: r.winner ? 'winner' : '' },
@@ -304,7 +335,7 @@ function history() {
         return h('a', { class: 'card link-card', href: `#/result/${e.id}`, style: `--accent:${game.color}` },
           h('span', { class: 'resume-icon' }, game.icon),
           h('span', { class: 'grow' },
-            h('strong', null, game.name),
+            h('strong', null, gameTitle(game, e.options)),
             h('span', { class: 'muted small block' }, `${dateFmt.format(e.endedAt)} · 👑 ${e.winners.map((i) => e.players[i]).join(', ')}`)),
           h('span', { class: 'chev' }, '›'));
       })));
@@ -313,9 +344,15 @@ function history() {
 // ---------------------------------------------------------------- statistiques
 
 function stats() {
-  const sections = GAMES.map((game) => {
-    const entries = store.history.filter((e) => e.gameId === game.id);
-    if (!entries.length) return null;
+  const groups = GAMES.flatMap((game) => {
+    const byTitle = new Map();
+    for (const e of store.history.filter((x) => x.gameId === game.id)) {
+      const title = gameTitle(game, e.options);
+      byTitle.set(title, [...(byTitle.get(title) ?? []), e]);
+    }
+    return [...byTitle.entries()].map(([title, entries]) => ({ game, title, entries }));
+  });
+  const sections = groups.map(({ game, title, entries }) => {
     const byPlayer = new Map();
     for (const e of entries) {
       e.players.forEach((name, i) => {
@@ -330,7 +367,7 @@ function stats() {
     const rows = [...byPlayer.values()].sort((a, b) => b.wins - a.wins || b.wins / b.played - a.wins / a.played);
     const showBest = game.showBest !== false;
     return h('section', { class: 'card stats-card', style: `--accent:${game.color}` },
-      h('h2', null, `${game.icon} ${game.name}`, h('span', { class: 'muted small' }, ` · ${entries.length} partie${entries.length > 1 ? 's' : ''}`)),
+      h('h2', null, `${game.icon} ${title}`, h('span', { class: 'muted small' }, ` · ${entries.length} partie${entries.length > 1 ? 's' : ''}`)),
       h('table', { class: 'stats' },
         h('thead', null, h('tr', null, h('th', null, 'Joueur'), h('th', null, 'Parties'), h('th', null, 'Victoires'), showBest && h('th', null, 'Record'))),
         h('tbody', null, rows.map((r) => h('tr', null,

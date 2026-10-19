@@ -24,6 +24,7 @@ C'est une PWA (application web installable) : elle fonctionne hors ligne, garde 
 | Encore ! | Colonnes (1er ou plus tard), couleurs (5 / 3), jokers, étoiles ; fin à 2 couleurs | Encore et encore ! (cœurs, lignes, dés spéciaux), blocs de feuilles I à VI |
 | Skyjo | Score de manche, doublé pour celui qui finit sans avoir strictement le plus petit ; fin à 100, le plus bas gagne | Skyjo Action, Skyjo – Extension (rappels de règles) |
 | Dix | Plus longue suite par couleur (une suite de 1 à 9 vaut 10), départage par la monnaie puis le nombre de cartes | Aucune extension n'existe |
+| **Feuille libre** | Feuille paramétrable : nom du jeu, saisie par manches ou par catégories, score le plus haut ou le plus bas, score de fin et nombre de manches facultatifs ; les feuilles déjà utilisées sont proposées comme modèles | — |
 
 Les extensions se cochent au moment de créer la partie. Les options qui dépendent d'une extension n'apparaissent que si elle est cochée.
 

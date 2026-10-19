@@ -1,6 +1,6 @@
 {
   "name": "gamescoring",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "Suivi des scores de jeux de société (PWA installable sur Android)",
   "type": "module",

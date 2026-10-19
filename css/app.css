@@ -426,6 +426,7 @@ h1, h2 { margin: 0; }
 }
 .calc-item .stepper { align-self: flex-start; }
 select.text { width: 100%; }
+textarea.text { padding: 10px 12px; resize: vertical; font: inherit; line-height: 1.4; }
 .grid tbody th small { white-space: nowrap; }
 .small-chip { padding: 2px 10px; font-size: 0.8rem; font-weight: 600; }
 

@@ -20,6 +20,8 @@ Un jeu est un module de [js/games/](../js/games/) qui exporte par défaut un obj
 | `maxPlayersFor(options)` | non | Maximum qui dépend des extensions (par exemple 6 joueurs avec une extension) |
 | `expansions` | non | `[{ key, name, description }]` : cases à cocher dans « Extensions » |
 | `options` | non | Réglages de la partie (voir plus bas) |
+| `titleFor(options)` | non | Nom affiché à la place de `name`, calculé à partir des options (la feuille libre affiche le nom saisi). Utilisé aussi pour regrouper les statistiques. |
+| `templates` | non | `true` pour proposer, à la création, les réglages des parties déjà jouées avec ce jeu |
 | `showBest` | non | `false` pour masquer la colonne « Record » des statistiques (jeux de points de vie, par exemple) |
 | `init(players, options)` | oui | Renvoie l'état initial `data`, qui doit être sérialisable en JSON |
 | `render(root, ctx)` | oui | Construit l'écran de partie dans `root` |
@@ -36,6 +38,18 @@ options: [
   { key: 'spirits', type: 'checkbox', label: 'Variante', default: false },
 ]
 ```
+
+Types d'options :
+
+| Type | Champ affiché | Propriétés utiles |
+| --- | --- | --- |
+| `checkbox` | Case à cocher | — |
+| `choice` | Boutons à choix unique | `choices: [{ value, label }]` |
+| `text` | Champ texte | `placeholder`, `maxLength`, `hint` |
+| `textarea` | Texte sur plusieurs lignes | `placeholder`, `hint` |
+| `number` | Champ numérique | `hint` |
+
+Une option peut aussi dépendre d'une autre avec `visible: (options) => booléen`. Exemple : la liste des catégories de la feuille libre n'apparaît qu'en mode « Par catégories ». Une option masquée garde sa valeur.
 
 Une option, ou un choix d'option, qui porte `requires: '<clé d'extension>'` n'apparaît que si cette extension est cochée. Si l'extension est décochée, l'option revient à sa valeur par défaut. Les extensions cochées sont disponibles dans `options.expansions`, que l'on teste avec `hasExpansion(options, 'clé')`.
 

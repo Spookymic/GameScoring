@@ -2,6 +2,18 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.2.0] - 2026-10-19
+
+### Ajouté
+
+- **Feuille libre** : une feuille de score générique et paramétrable, pour les jeux qui n'ont pas leur propre écran. On règle :
+  - le nom du jeu ;
+  - la saisie, par manches ou par catégories (catégories au choix) ;
+  - le vainqueur, au score le plus haut ou le plus bas ;
+  - un score de fin de partie et un nombre de manches, tous deux facultatifs.
+- Les feuilles déjà utilisées sont proposées comme modèles à la création d'une partie.
+- Les statistiques séparent chaque feuille libre selon son nom.
+
 ## [1.1.1] - 2026-10-19
 
 ### Corrigé
@@ -60,6 +72,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.2.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.2.0
 [1.1.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.0
 [1.0.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.0.1
