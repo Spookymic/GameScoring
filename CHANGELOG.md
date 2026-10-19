@@ -2,6 +2,13 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.1.1] - 2026-10-19
+
+### Corrigé
+
+- Mises à jour sur mobile : l'appli installée cherche une nouvelle version à chaque fois qu'on y revient, puis se recharge d'elle-même. La partie en cours est conservée.
+- Le cache hors ligne ne récupère plus d'anciens fichiers depuis le cache du navigateur.
+
 ## [1.1.0] - 2026-10-19
 
 ### Ajouté
@@ -53,6 +60,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.1.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.1.0
 [1.0.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.0.0

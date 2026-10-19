@@ -30,7 +30,24 @@ window.addEventListener('hashchange', route);
 route();
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  // Une nouvelle version a pris le relais : on recharge pour l'afficher (la partie en cours est sauvegardée).
+  // Pas de rechargement à la toute première installation.
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  let reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloading) return;
+    reloading = true;
+    location.reload();
+  });
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('sw.js');
+      // Une appli installée n'est pas rechargée quand on la rouvre : on cherche une mise à jour à chaque retour.
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') registration.update().catch(() => {});
+      });
+    } catch { /* service worker indisponible (navigation privée, http…) */ }
+  });
 }
 
 // ---------------------------------------------------------------- utilitaires

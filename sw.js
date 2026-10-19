@@ -1,6 +1,6 @@
 // Service worker : met l'application en cache pour un usage hors ligne.
 // Incrémenter CACHE à chaque modification des fichiers listés.
-const CACHE = 'gamescoring-v6';
+const CACHE = 'gamescoring-v7';
 const ASSETS = [
   './',
   'index.html',
@@ -33,7 +33,10 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
+  // cache: 'reload' contourne le cache HTTP du navigateur (GitHub Pages sert les fichiers avec max-age=600),
+  // sinon une nouvelle version pourrait être installée avec d'anciens fichiers.
+  const requests = ASSETS.map((url) => new Request(url, { cache: 'reload' }));
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(requests)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
@@ -51,7 +54,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.open(CACHE).then(async (cache) => {
       const cached = await cache.match(request, { ignoreSearch: true });
-      const network = fetch(request)
+      const network = fetch(request, { cache: 'no-cache' })
         .then((response) => {
           if (response.ok) cache.put(request, response.clone());
           return response;

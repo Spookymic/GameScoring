@@ -71,6 +71,12 @@ Les points importants :
 
 [sw.js](../sw.js) met en cache la liste `ASSETS` à l'installation. Il répond ensuite depuis le cache et met à jour le cache en arrière-plan (stale-while-revalidate).
 
+Pour que les mises à jour arrivent sur les téléphones :
+
+- le service worker ignore le cache HTTP du navigateur (`cache: 'reload'` à l'installation, `no-cache` en arrière-plan), car GitHub Pages sert les fichiers avec `max-age=600` ;
+- l'appli cherche une nouvelle version à chaque retour au premier plan (`registration.update()`), car une PWA installée n'est pas rechargée quand on la rouvre ;
+- quand la nouvelle version prend le relais (`controllerchange`), la page se recharge d'elle-même. La partie en cours n'est pas perdue, puisqu'elle est sauvegardée en continu.
+
 À chaque publication :
 - **incrémenter `CACHE`**, pour que l'ancien cache soit supprimé ;
 - **ajouter tout nouveau fichier à `ASSETS`**, sinon il ne sera pas disponible hors ligne.
