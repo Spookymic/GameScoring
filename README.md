@@ -2,7 +2,7 @@
 
 Application pour suivre les scores de nos jeux de société, installable sur Android.
 
-C'est une PWA (application web installable) : elle fonctionne hors ligne, garde toutes les données sur le téléphone et n'a aucune dépendance. Le besoin de départ est décrit dans [Cadrage.md](Cadrage.md).
+C'est une PWA (application web installable) : elle fonctionne hors ligne, garde toutes les données sur le téléphone et n'a aucune dépendance.
 
 **Application en ligne :** <https://spookymic.github.io/GameScoring/> (une fois GitHub Pages activé, voir plus bas)
 
