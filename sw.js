@@ -1,6 +1,6 @@
 // Service worker : met l'application en cache pour un usage hors ligne.
 // Incrémenter CACHE à chaque modification des fichiers listés.
-const CACHE = 'gamescoring-v4';
+const CACHE = 'gamescoring-v5';
 const ASSETS = [
   './',
   'index.html',

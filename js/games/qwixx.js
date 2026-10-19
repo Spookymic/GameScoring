@@ -102,13 +102,17 @@ export default {
           const last = cells.length - 1;
           const before = cells.slice(0, last).filter(Boolean).length;
           const n = rowCrosses(sheet, row, options);
-          return h('div', { class: `qrow${closed.has(row.key) && !sheet.locks[row.key] ? ' closed' : ''}`, style: `--row:${row.color}` },
+          // Une rangée fermée (par n'importe quel joueur) n'accepte plus de nouvelle croix.
+          // Retirer une croix reste possible pour corriger une erreur de saisie.
+          const rowClosed = closed.has(row.key);
+          const closedByOther = rowClosed && !sheet.locks[row.key];
+          return h('div', { class: `qrow${closedByOther ? ' closed' : ''}`, style: `--row:${row.color}` },
             h('div', { class: 'qcells' },
               row.numbers.map((num, k) => h('button', {
                 type: 'button',
                 class: `qcell${cells[k] ? ' x' : ''}`,
                 // Le dernier nombre n'est cochable qu'avec au moins 5 croix dans la rangée.
-                disabled: k === last && !cells[k] && before < 5,
+                disabled: !cells[k] && (rowClosed || (k === last && before < 5)),
                 'aria-pressed': String(cells[k]),
                 'aria-label': `${row.label} ${num}`,
                 onclick: () => {
@@ -120,7 +124,7 @@ export default {
               h('button', {
                 type: 'button',
                 class: `qcell lock${sheet.locks[row.key] ? ' x' : ''}`,
-                disabled: !cells[last],
+                disabled: !cells[last] || closedByOther,
                 'aria-label': `Cadenas ${row.label}`,
                 onclick: () => { sheet.locks[row.key] = !sheet.locks[row.key]; changed(); },
               }, '🔒')),

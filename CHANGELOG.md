@@ -2,6 +2,12 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.0.1] - 2026-10-19
+
+### Corrigé
+
+- Qwixx : une rangée fermée par le cadenas n'accepte plus de nouvelle croix, ni chez le joueur qui l'a fermée, ni chez les autres. Retirer une croix reste possible pour corriger une erreur.
+
 ## [1.0.0] - 2026-10-19
 
 Première version.
@@ -39,4 +45,5 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.0.1]: https://github.com/Spookymic/GameScoring/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.0.0
