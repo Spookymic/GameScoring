@@ -29,6 +29,9 @@ C'est une PWA (application web installable) : elle fonctionne hors ligne, garde 
 | Flip 7 | Calculateur de manche par joueur (nombres, bonus, x2, saut, Flip 7 +15), jusqu'à 200 points | Flip 7 Vengeance (malus, ÷2, Zéro, 13 porte-bonheur, mode sans pitié) |
 | Uno | Le gagnant marque les cartes restées en main, comptées par type ; ou chacun ses points, le plus bas gagne | Classique, Uno Flip (côtés clair et sombre), No Mercy (1000 points, +250 par élimination) |
 | 6 qui prend ! | Numéros des cartes ramassées (têtes de bœuf calculées) ou têtes directement ; fin à 66, le plus bas gagne | 6 qui surprend ! (2 manches) ; variante pro sans changement de décompte |
+| Draftosaurus | Calculateur du parc : zones (été ou hiver), rivière, T. rex ; départage au moins de T. rex | Marina (plésiosaures), Aerial Show (volière) |
+| Agricola 2 joueurs | Les Fermiers de la Lande – Big Box : animaux et bonus par espèce calculés, extensions de ferme, stalles, étables, bâtiments ; départage par le premier joueur | Big Box (bâtiments des extensions : points saisis, aide pour les formules) |
+| Carcassonne | Chaque évaluation saisie (route, ville, abbaye, pré…) avec calcul des points, égalités de majorité, piste de 50 et tours | Abbé et Rivière, Auberges et Cathédrales, Marchands et Bâtisseurs, Princesse et Dragon, La Tour |
 | **Feuille libre** | Feuille paramétrable : nom du jeu, saisie par manches ou par catégories, score le plus haut ou le plus bas, score de fin et nombre de manches facultatifs ; les feuilles déjà utilisées sont proposées comme modèles | — |
 
 Les extensions se cochent au moment de créer la partie. Les options qui dépendent d'une extension n'apparaissent que si elle est cochée.

@@ -205,6 +205,54 @@ Légende :
 - ✅ 6 qui surprend ! : exactement 2 manches, sans score cible. Avec « Négatif = Positif », des têtes s'annulent : saisir alors directement les têtes de bœuf.
 - ✅ La variante pro ne change pas le décompte.
 
+## Draftosaurus (Ankama)
+
+- ✅ Face été :
+  - forêt des Similaires 2/4/8/12/18/24 ;
+  - plaine des Différences 1/3/6/10/15/21 ;
+  - prairie des Amoureux 5 par couple ;
+  - trio des bois 7 avec exactement 3 dinos (et non 6, comme l’indiquent certains sites) ;
+  - roi de la Jungle 7 si personne n’a strictement plus de dinos de l’espèce ;
+  - île du Solitaire 7 ;
+  - rivière 1 par dino ;
+  - +1 par enclos avec un T. rex.
+
+  Égalité : le moins de T. rex gagne. [Règles FR](https://cdn.1j1ju.com/medias/20/4d/eb-draftosaurus-regle.pdf)
+- ✅ Face hiver : bois Bien Ordonné, pont des Amoureux (6 par couple d’une rive à l’autre), pyramide, point de vue (2 par dino de même espèce chez le voisin de droite), quarantaine.
+- ⚠️ Face hiver : les valeurs du bois Bien Ordonné et de la pyramide sont imprimées sur le plateau ; l’appli reprend celles de Board Game Arena. Rien ne confirme non plus que la rivière et le bonus T. rex s’appliquent encore sur cette face.
+- ⚠️ Marina et Aerial Show : les valeurs sont imprimées sur les plateaux, on saisit donc le total. [Marina FR](https://cdn.1j1ju.com/medias/8f/85/a9-draftosaurus-marina-regle.pdf), [Aerial Show FR](https://media.play-in.com/pdf/rules_games/draftosaurus_-_extension_aerial_show_regles_fr.pdf)
+
+## Agricola : Les Fermiers de la Lande – La Big Box (2 joueurs)
+
+- ✅ 1 point par animal (sauf ceux de l’Enclos), plus un bonus par espèce :
+
+  | Espèce | −3 | 0 | +1 | +2 | +3, puis +1 par animal en plus |
+  | --- | --- | --- | --- | --- | --- |
+  | Moutons | 0 à 3 | 4 à 7 | 8 à 10 | 11 et 12 | à partir de 13 |
+  | Cochons | 0 à 3 | 4 à 6 | 7 et 8 | 9 et 10 | à partir de 11 |
+  | Vaches | 0 à 3 | 4 et 5 | 6 et 7 | 8 et 9 | à partir de 10 |
+  | Chevaux | 0 à 3 | 4 | 5 et 6 | 7 et 8 | à partir de 9 |
+
+- ✅ Ferme et bâtiments :
+  - 4 points par extension de ferme dont les 3 cases sont utilisées ;
+  - stalle 1, étable 4, bâtiments selon leurs points imprimés ou leur formule ;
+  - aucune pénalité pour les cases vides.
+- ✅ Égalité : le joueur qui n’était pas premier joueur au premier tour gagne. [Règles Big Box FR](https://cdn.1j1ju.com/medias/38/37/67-agricola-les-fermiers-de-la-lande-la-big-box-regle.pdf), [règles Lookout EN](https://www.lookout-spiele.de/upload/de_acbas_bigbox.html_Agricola_All_creatures_big_and_small_BB_Rules_054_EN_WEB_1.pdf)
+
+## Carcassonne (Hans im Glück / Z-Man)
+
+- ✅ Pendant la partie : route achevée 1 par tuile ; ville achevée 2 par tuile + 2 par blason ; abbaye ou jardin achevé 9.
+- ✅ En fin de partie :
+  - route inachevée 1 par tuile ;
+  - ville inachevée 1 par tuile + 1 par blason ;
+  - abbaye 1 + tuiles voisines (de même pour l’abbé retiré en cours de partie) ;
+  - pré 3 par ville achevée.
+- ✅ À égalité de majorité, chaque joueur concerné marque tout, et une égalité finale donne plusieurs gagnants. [Règles FR](https://media.play-in.com/pdf/rules_games/carcassonne_jeu_de_base_-_nouvelle_edition_regles_fr.pdf), [règles v3 EN](https://cdn.svc.asmodee.net/production-zman/uploads/2024/09/carcassonne_v3_rulesheet_en-1.pdf)
+- ✅ Auberges et Cathédrales : une auberge double une route achevée (0 si inachevée), une cathédrale fait passer une ville à 3 par tuile et par blason (0 si inachevée). Le grand meeple compte double pour la majorité.
+- ✅ Marchands et Bâtisseurs : 10 points par majorité de marchandises ; avec le cochon, un pré rapporte 4 par ville.
+- ✅ Princesse et Dragon : fée +1 en début de tour, +3 à l’évaluation.
+- ⚠️ La Tour : la rançon de 3 points n’est confirmée que par des sources secondaires.
+
 ## Dix (Lucky Duck Games, édition française de TEN)
 
 - ✅ 1 point par carte de la plus longue suite de chaque couleur ; une suite de 1 à 9 vaut 10. Égalité : la monnaie restante, puis le moins de cartes.

@@ -2,6 +2,22 @@
 
 Le format suit [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) et les numéros de version suivent le [versionnage sémantique](https://semver.org/lang/fr/).
 
+## [1.7.0] - 2026-10-22
+
+### Ajouté
+
+- **Draftosaurus** : calculateur du parc de chaque joueur.
+  - Face été ou hiver, rivière, bonus T. rex ; départage au moins de T. rex.
+  - Extensions **Marina** et **Aerial Show**.
+- **Agricola 2 joueurs** (Les Fermiers de la Lande – La Big Box).
+  - Les points des animaux et le bonus de chaque espèce sont calculés.
+  - Extensions de ferme à 4 points, stalles, étables, bâtiments spéciaux.
+  - Départage officiel : le joueur qui n’a pas commencé gagne.
+- **Carcassonne** : chaque évaluation est saisie pendant la partie puis en fin de partie, et l’appli calcule les points.
+  - Route, ville, abbaye ou jardin, pré.
+  - Égalités de majorité, position sur la piste de 50 points.
+  - Extensions Auberges et Cathédrales, Marchands et Bâtisseurs, Princesse et Dragon, La Tour.
+
 ## [1.6.0] - 2026-10-19
 
 ### Ajouté
@@ -129,6 +145,7 @@ Première version.
 - Partie en cours sauvegardée en continu, revanche, historique, statistiques par joueur, export et import JSON.
 - L'écran reste allumé pendant une partie.
 
+[1.7.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.7.0
 [1.6.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.6.0
 [1.5.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.5.0
 [1.4.0]: https://github.com/Spookymic/GameScoring/releases/tag/v1.4.0

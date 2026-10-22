@@ -680,3 +680,9 @@ dialog.tools > * + * { margin-top: 12px; }
 .duel-score strong { display: block; font-size: 2rem; }
 .duel-score small { color: var(--muted); }
 .game-root { display: flex; flex-direction: column; gap: 18px; }
+
+/* Draftosaurus, Carcassonne */
+.zone-input { display: flex; align-items: center; gap: 10px; }
+.zone-input .district-value { min-width: 2ch; text-align: right; }
+.big-check { width: 28px; height: 28px; accent-color: var(--primary); }
+.event-log { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; }
